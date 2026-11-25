@@ -25,6 +25,11 @@ def load_csv(filename):
         print("Starting with an empty expense tracker.")
         return []
 
+
+
+
+
+
 def add_expense(expenses):
     expense = {}
     while True:
@@ -42,7 +47,9 @@ def add_expense(expenses):
         print("2. Needs")
         print("3. Savings")
         print("4. Income")
+        
         choice = input("Enter Category(1-4): ")
+  
         
         if choice == "1":
             print("You have chosen Wants")
@@ -63,14 +70,16 @@ def add_expense(expenses):
         else:
             print("Please enter a valid number!")
         
-    expense["store"] = input("Enter Store: ")
+    expense["store"] = input("Enter Store: ").lower().strip()
+    expense["purpose"] = input("What category does this purchase fall under?(Food/transportation/Entertainment/Bills/shopping): ").lower().strip()
     expense["date"] = input("Enter Date: ")
 
     while True:
         print("1. Debit Card")
         print("2. Credit Card")
         print("3. Cash")
-        selection = input("Enter payment Method(1-3)") 
+        selection = input("Enter payment Method(1-3)")
+        
         
         if selection == "1":
             print("You have chosen Debit Card")
@@ -88,10 +97,13 @@ def add_expense(expenses):
             print("Please enter a valid number!")                                
 
         
-    expense["purpose"] = input("Enter purpose: ")
+    
     expenses.append(expense)
     print("Expense saved successfully!")
     return expenses
+    
+    
+    
     
 def view_expenses(expenses):
     if not expenses:
@@ -109,6 +121,7 @@ def search_category(expenses):
         print("4. Income")
     
         selected_category = input("Please Choose a number(1-4): ")
+
                           
         if selected_category == "1":
             selected_category = "needs"
@@ -128,7 +141,8 @@ def search_category(expenses):
                 found = True
         if not found:
             print("No records at this time!")
-        break
+            break
+
 
 def monthly_summary(expenses):
     needs_total = 0
@@ -152,6 +166,7 @@ def monthly_summary(expenses):
     print(f"Wants total: ${wants_total:.2f}")
     print(f"Savings total: ${savings_total:.2f}")
     print(f"Income total: ${income_total:.2f}")
+
 
         
         
